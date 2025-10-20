@@ -1,17 +1,14 @@
-import { Button } from '@/components/ui/button';
-const App = () => {
+import { useState } from "react";
+import SearchForm from "./components/form/SearchForm";
+import UserProfile from "./components/user/UserProfile";
+
+export default function App() {
+  const [userName, setUserName] = useState("Jiro");
+
   return (
-    <div className='flex  items-center justify-center h-screen'>
-      <div className='flex gap-4'>
-        <Button>Click me</Button>
-        <Button variant='outline' size='lg'>
-          Click me
-        </Button>
-        <Button variant='destructive' size='sm'>
-          Click me
-        </Button>
-      </div>
-    </div>
+    <main className="mx-auto max-w-6xl px-8 py-20">
+      <SearchForm userName={userName} setUserName={setUserName} />
+      <UserProfile userName={userName} />
+    </main>
   );
-};
-export default App;
+}
