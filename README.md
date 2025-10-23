@@ -1,73 +1,124 @@
-# React + TypeScript + Vite
+# GitHub Users Search
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React application for searching and viewing GitHub user profiles with detailed statistics and repository information.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 **Search GitHub Users**: Search for any GitHub user by their username
+- 👤 **User Profile Display**: View user avatar, name, bio, and GitHub profile link
+- 📊 **Statistics Dashboard**: Display comprehensive stats including:
+  - Total repositories count
+  - Followers count
+  - Following count
+  - Gists count
+- 🎨 **Modern UI**: Built with Tailwind CSS and Radix UI components
+- 📱 **Responsive Design**: Works seamlessly on desktop and mobile devices
+- ⚡ **Real-time Data**: Uses GraphQL with Apollo Client for efficient data fetching
+- 🌙 **Theme Support**: Dark/light mode toggle (via next-themes)
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend**: React 19 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: Radix UI
+- **Data Fetching**: Apollo Client + GraphQL
+- **Icons**: Lucide React
+- **Notifications**: Sonner
+- **Charts**: Recharts
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (version 18 or higher)
+- npm, yarn, or pnpm
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd search-github-users
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
 ```
+
+3. Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Usage
+
+1. Enter a GitHub username in the search input field
+2. Click the "Search" button or press Enter
+3. View the user's profile information and statistics
+4. Click "Overview" to visit their GitHub profile
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── form/
+│   │   └── SearchForm.tsx      # Search input component
+│   ├── ui/                     # Reusable UI components
+│   └── user/
+│       ├── UserCard.tsx        # User profile card
+│       ├── UserProfile.tsx     # Main user profile component
+│       ├── StatsCard.tsx       # Individual stat card
+│       └── StatsContainer.tsx  # Stats grid container
+├── apolloClient.ts             # Apollo Client configuration
+├── queries.ts                  # GraphQL queries
+├── types.ts                    # TypeScript type definitions
+├── App.tsx                     # Main application component
+└── main.tsx                    # Application entry point
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## GraphQL API
+
+This application uses GitHub's GraphQL API v4 to fetch user data. The main query fetches:
+
+- User basic information (name, avatar, bio, profile URL)
+- Repository statistics (total count, recent repositories with languages)
+- Social statistics (followers, following, gists)
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+- GitHub for providing the GraphQL API
+- Vite team for the excellent build tool
+- Radix UI for accessible component primitives
+- Tailwind CSS for the utility-first CSS framework
