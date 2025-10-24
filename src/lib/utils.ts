@@ -36,7 +36,7 @@ export const calculateMostStarredRepos = (
 
 export const calculatePopularLanguages = (
   repositories: Repository[]
-): { language: string; count: number } | [] => {
+): { language: string; count: number }[] | [] => {
   if (repositories.length === 0) return [];
 
   const languageMap: { [key: string]: number } = {};
