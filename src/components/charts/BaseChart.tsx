@@ -39,6 +39,7 @@ export default function BaseChart<T extends Record<string, any>>({
             tickLine={false}
             tickMargin={10}
             axisLine={false}
+            tickFormatter={(val)=>val.slice(0, 10)}
           />
           <YAxis dataKey={valueKey as string} />
           <ChartTooltip content={<ChartTooltipContent />} />
