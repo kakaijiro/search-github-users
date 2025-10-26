@@ -1,5 +1,6 @@
 import type { Repository } from "@/types";
 import { calculateMostStarredRepos } from "@/lib/utils";
+import BaseChart from "./BaseChart";
 
 export default function PopularRepos({
   repositories,
@@ -8,5 +9,13 @@ export default function PopularRepos({
 }) {
   const popularRepos = calculateMostStarredRepos(repositories);
 
-  return <div>PopularRepos</div>;
+  return (
+    <BaseChart
+      label="Most Popular"
+      color="hsl(var(--chart-1))"
+      data={popularRepos}
+      labelKey="repo"
+      valueKey="stars"
+    />
+  );
 }

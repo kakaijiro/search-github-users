@@ -1,5 +1,6 @@
 import { calculateMostForkedRepos } from "@/lib/utils";
 import type { Repository } from "@/types";
+import BaseChart from "./BaseChart";
 
 export default function ForkedRepos({
   repositories,
@@ -8,5 +9,13 @@ export default function ForkedRepos({
 }) {
   const mostForkedRepos = calculateMostForkedRepos(repositories);
 
-  return <div>ForkedRepos</div>;
+  return (
+    <BaseChart
+      label="Most Forked"
+      color="hsl(var(--chart-2))"
+      data={mostForkedRepos}
+      labelKey="repo"
+      valueKey="count"
+    />
+  );
 }
