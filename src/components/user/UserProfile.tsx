@@ -42,7 +42,7 @@ export default function UserProfile({ userName }: UserProfileProps) {
         gists={gists.totalCount}
       />
       {repositories.totalCount > 0 && (
-        <div className="grid md:grid-cols-2 gap-4 mt-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
           <UsedLanguages repositories={repositories.nodes} />
           <PopularRepos repositories={repositories.nodes} />
           <ForkedRepos repositories={repositories.nodes} />

@@ -6,7 +6,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-type ChartProps<T extends Record<string, any>> = {
+type ChartProps<T extends Record<string, string | number>> = {
   label: string;
   color: string;
   data: T[];
@@ -14,7 +14,7 @@ type ChartProps<T extends Record<string, any>> = {
   valueKey: keyof T;
 };
 
-export default function BaseChart<T extends Record<string, any>>({
+export default function BaseChart<T extends Record<string, string | number>>({
   label,
   color,
   data,
@@ -39,7 +39,7 @@ export default function BaseChart<T extends Record<string, any>>({
             tickLine={false}
             tickMargin={10}
             axisLine={false}
-            tickFormatter={(val)=>val.slice(0, 10)}
+            tickFormatter={(val) => val.slice(0, 8)}
           />
           <YAxis dataKey={valueKey as string} />
           <ChartTooltip content={<ChartTooltipContent />} />
