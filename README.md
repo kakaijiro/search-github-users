@@ -20,17 +20,22 @@ A modern React application for searching and viewing GitHub user profiles with d
 - ⚡ **Real-time Data**: Uses GraphQL with Apollo Client for efficient data fetching
 - 🌙 **Theme Support**: Dark/light mode toggle (via next-themes)
 - 🔄 **Loading States**: Smooth loading animations and skeleton components
+- ✅ **Comprehensive Testing**: Unit tests with Vitest and React Testing Library
+- 🎭 **API Mocking**: MSW (Mock Service Worker) for reliable testing
+- 🎯 **Path Aliases**: Clean imports using `@/` alias for the src directory
 
 ## Tech Stack
 
 - **Frontend**: React 19 + TypeScript
 - **Build Tool**: Vite
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS v4
 - **UI Components**: Radix UI
 - **Data Fetching**: Apollo Client + GraphQL
 - **Icons**: Lucide React
 - **Notifications**: Sonner
 - **Charts**: Recharts
+- **Testing**: Vitest + React Testing Library
+- **API Mocking**: MSW (Mock Service Worker)
 
 ## Getting Started
 
@@ -38,6 +43,7 @@ A modern React application for searching and viewing GitHub user profiles with d
 
 - Node.js (version 18 or higher)
 - npm, yarn, or pnpm
+- GitHub Personal Access Token (for API access)
 
 ### Installation
 
@@ -56,7 +62,16 @@ yarn install
 pnpm install
 ```
 
-3. Start the development server:
+3. Create a `.env` file in the root directory and add your GitHub Personal Access Token:
+```bash
+VITE_GITHUB_TOKEN=your_github_personal_access_token_here
+```
+
+   To create a GitHub Personal Access Token:
+   - Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+   - Generate a new token with `public_repo` scope
+
+4. Start the development server:
 ```bash
 npm run dev
 # or
@@ -65,7 +80,7 @@ yarn dev
 pnpm dev
 ```
 
-4. Open your browser and navigate to `http://localhost:5173`
+5. Open your browser and navigate to `http://localhost:5173`
 
 ## Usage
 
@@ -82,6 +97,16 @@ pnpm dev
 
 ```
 src/
+├── __tests__/                  # Test files
+│   ├── App.test.tsx            # App component tests
+│   ├── SearchForm.test.tsx     # SearchForm component tests
+│   ├── UserCard.test.tsx       # UserCard component tests
+│   ├── UserProfile.test.tsx    # UserProfile component tests
+│   ├── StatsCard.test.tsx      # StatsCard component tests
+│   ├── StatsContainer.test.tsx # StatsContainer component tests
+│   ├── ForkedRepos.test.tsx    # ForkedRepos chart tests
+│   ├── utils.test.ts           # Utility functions tests
+│   └── mock-data.ts            # Test mock data
 ├── components/
 │   ├── charts/
 │   │   ├── BaseChart.tsx       # Reusable chart component
@@ -104,21 +129,28 @@ src/
 │       ├── StatsCard.tsx       # Individual stat card
 │       ├── StatsContainer.tsx  # Stats grid container
 │       └── Loading.tsx         # Loading component
+├── mocks/                      # MSW mock handlers
+│   ├── handlers.ts             # GraphQL API mock handlers
+│   └── server.ts               # MSW server setup
 ├── lib/
 │   └── utils.ts                # Utility functions for data processing
+├── assets/                     # Static assets
 ├── apolloClient.ts             # Apollo Client configuration
 ├── queries.ts                  # GraphQL queries
 ├── types.ts                    # TypeScript type definitions
+├── vitest.setup.ts             # Vitest test configuration
+├── index.css                   # Global styles
 ├── App.tsx                     # Main application component
 └── main.tsx                    # Application entry point
 ```
 
 ## Available Scripts
 
-- `npm run dev` - Start development server
+- `npm run dev` - Start development server (runs on http://localhost:5173)
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
+- `npm test` - Run tests with Vitest
 
 ## GraphQL API
 
@@ -141,6 +173,22 @@ This application uses GitHub's GraphQL API v4 to fetch user data. The main query
 
 This project is licensed under the MIT License.
 
+## Testing
+
+This project includes comprehensive test coverage using:
+- **Vitest**: Fast unit testing framework
+- **React Testing Library**: Component testing utilities
+- **MSW**: API mocking for reliable and isolated tests
+
+Run tests with:
+```bash
+npm test
+# or
+yarn test
+# or
+pnpm test
+```
+
 ## Acknowledgments
 
 - GitHub for providing the GraphQL API
@@ -149,3 +197,5 @@ This project is licensed under the MIT License.
 - Tailwind CSS for the utility-first CSS framework
 - Recharts for beautiful and responsive charts
 - Lucide React for the comprehensive icon library
+- Vitest team for the modern testing framework
+- MSW team for seamless API mocking
